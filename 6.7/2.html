@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Поиск минимального и максимального числа</h1>
+    <p class="all-elements"></p>
+    <button class="min">Найти минимальное число</button>
+    <button class="max">Найти максимальное число</button>
+    <p>Минимальное число: <span class="minNumber"></span></p>
+    <p>Максимальное число: <span class="maxNumber"></span></p>
+    <script>
+        const numbers = [12, 5, 8, 20, 3, 16]
+        const list = document.querySelector('.all-elements')
+        const minNumber = document.querySelector('.minNumber')
+        const minBtn = document.querySelector('.min')
+        const maxNumber = document.querySelector('.maxNumber')
+        const maxBtn = document.querySelector('.max')
+        numbers.forEach((n) => {
+            list.textContent = numbers.join(', ')
+        })
+        minBtn.addEventListener('click', () => {
+            minNumber.textContent = Math.min(...numbers)
+        })
+        maxBtn.addEventListener('click', () => {
+            maxNumber.textContent = Math.max(...numbers)
+        })
+
+
+    </script>
+</body>
+
+</html>

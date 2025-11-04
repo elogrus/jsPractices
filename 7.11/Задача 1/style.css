@@ -1,0 +1,32 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+button {
+    padding: 1em;
+    border-radius: 0.5em;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    color: #fff;
+}
+button:hover {
+    opacity: 0.9;
+}
+button:active {
+    opacity: 0.8;
+}
+
+.addBtn {
+    background-color: #449937;
+}
+
+.findBtn {
+    background-color: #1c45c6;
+}
+
+.list .active {
+    color: red;
+    text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; gap: 20px; margin-bottom: 10px;" id="images">
+        <img style="width: 200px; cursor: pointer;" src="./1.jpg" />
+        <img style="width: 200px; cursor: pointer;" src="./2.jpg" />
+        <img style="width: 200px; cursor: pointer;" src="./3.jpg" />
+    </div>
+    <img style="width: 660px;" src="./1.jpg" id="bigImage" />
+    <script>
+        const images = document.getElementById('images')
+        const bigImage = document.getElementById('bigImage')
+
+        images.addEventListener('click', (e) => {
+            const img = e.target
+            bigImage.setAttribute('src', img.getAttribute('src'))
+        })
+    </script>
+</body>
+
+</html>

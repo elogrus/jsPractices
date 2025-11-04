@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>100</li>
+        <li>500</li>
+        <li>250</li>
+        <li>750</li>
+        <li>300</li>
+    </ul>
+    <div>
+        <button id="sortIncBtn">Сортировать по возрастанию</button>
+        <button id="sortDecBtn">Сортировать по убыванию</button>
+    </div>
+    <script>
+        const list = document.getElementById('list')
+        const sortIncBtn = document.getElementById('sortIncBtn')
+        const sortDecBtn = document.getElementById('sortDecBtn')
+
+        const prices = [100, 500, 250, 750, 300]
+        const fillPrices = (prices) => {
+            list.innerHTML = ''
+            prices.forEach(price => {
+                const li = document.createElement('li')
+                li.innerHTML = price
+                list.appendChild(li)
+            });
+        }
+        fillPrices(prices)
+
+        sortIncBtn.addEventListener('click', () => {
+            fillPrices(prices.toSorted())
+        })
+
+        sortDecBtn.addEventListener('click', () => {
+            fillPrices(prices.toSorted((a, b) => b - a))
+        })
+    </script>
+</body>
+
+</html>
