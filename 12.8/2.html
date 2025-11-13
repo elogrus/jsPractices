@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .promoContainer {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .promo {
+            background-color: #fff;
+            border-radius: 1em;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5em;
+            gap: 1em;
+        }
+
+        .promo>div {
+            display: flex;
+            gap: 10px;
+        }
+
+        .promo.active input {
+            color: #559252;
+        }
+
+        .promo span {
+            display: none;
+            font-weight: 700;
+        }
+
+        .promo.active span {
+            color: #559252;
+            display: block;
+        }
+
+        button {
+            background-color: #4C91FD;
+            outline: 0;
+            border: 0;
+            padding: 1em;
+            border-radius: 1em;
+            font-weight: 800;
+        }
+
+        button:not(:disabled) {
+            cursor: pointer;
+        }
+
+        button:not(:disabled):hover {
+            opacity: 0.8;
+        }
+
+        button:not(:disabled):active {
+            opacity: 0.9;
+        }
+
+        input {
+            padding: 1em;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="promoContainer">
+        <div class="promo">
+            <div>
+                <input placeholder="Введите промокод" />
+                <button>Применить</button>
+            </div>
+            <span></span>
+        </div>
+    </div>
+
+
+    <script>
+        function getCookie() {
+            return document.cookie.split('; ').reduce((acc, item) => {
+                const [name, value] = item.split('=')
+                acc[name] = value
+                return acc
+            }, {})
+        }
+
+        const promocodeObj = {
+            promocode: "PROM50",
+            gift: "Скидка 50%"
+        }
+        const block = document.querySelector(".promo")
+        const btn = block.querySelector("button")
+        const input = block.querySelector("input")
+        const message = block.querySelector("span")
+        const applyPromocode = () => {
+            btn.disabled = true
+            input.disabled = true
+            block.classList.add('active')
+            message.innerHTML = "Промокод применён. " + promocodeObj.gift
+        }
+        const cookie = getCookie();
+        if (cookie.promo === promocodeObj.promocode) {
+            input.value = cookie.promo
+            applyPromocode()
+        }
+        btn.addEventListener("click", () => {
+            const promo = input.value
+            if (promocodeObj.promocode === promo) {
+                document.cookie = "promo=PROM50"
+                applyPromocode()
+            } else {
+                block.classList.remove('active')
+                input.value = ""
+            }
+        })
+    </script>
+
+</body>
+
+</html>

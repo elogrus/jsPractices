@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form>div {
+            margin-bottom: 1em;
+        }
+
+        p {
+            margin: 0;
+        }
+        #results {
+            margin-top: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>Форма опроса</h1>
+        <div id="name">
+            <span>Имя пользователя:</span>
+            <input required/>
+        </div>
+        <div id="email">
+            <span>Email: </span>
+            <input type="email" required/>
+        </div>
+        <div id="sex">
+            <span>Пол:</span>
+            <input name="sex" value="Мужской" type="radio">
+            <span>Мужской</span>
+            <input name="sex" value="Женский" type="radio">
+            <span>Женский</span>
+        </div>
+        <div id="rate">
+            <span>Оценка сервиса:</span>
+            <input type="range" min="1" max="10">
+        </div>
+        <div id="interests">
+            <p>Интересы пользователя:</p>
+            <div>
+                <input type="checkbox" name="inter" value="Спорт" />
+                <span>Спорт</span>
+            </div>
+            <div>
+                <input type="checkbox" name="inter" value="Музыка" />
+                <span>Музыка</span>
+            </div>
+            <div>
+                <input type="checkbox" name="inter" value="Путешествия" />
+                <span>Путешествия</span>
+            </div>
+            <div>
+                <input type="checkbox" name="inter" value="Кино" />
+                <span>Кино</span>
+            </div>
+        </div>
+        <div id="comments">
+            <p>Дополнительные комментарии:</p>
+            <textarea></textarea>
+        </div>
+        <button type="submit" id="submit">Отправить</button>
+    </form>
+    <div id="results" style="display: none;">
+        <span> </span>
+        <span></span>
+        <span> </span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+    <script>
+        const renderResults = (form) => {
+            const div = document.querySelector('#results')
+            const spans = div.children
+            spans[0].innerHTML = "Имя пользователя: " + form.name
+            spans[1].innerHTML = "Email: " + form.email
+            spans[2].innerHTML = "Пол: " + form.sex
+            spans[3].innerHTML = "Оценка сервиса: " + form.rate
+            spans[4].innerHTML = "Интересы пользователя: " + form.interests
+            spans[5].innerHTML = "Дополнительные комментарии: " + form.comments
+            div.style['display'] = ''
+        }
+        const submit = (e) => {
+            e.preventDefault()
+            const form = {}
+            form.name = document.querySelector('#name > input').value
+            form.email = document.querySelector('#email > input').value
+            const sex = Array.from(document.querySelectorAll('#sex > input')).find(input => input.checked)
+            form.sex = sex ? sex.value : ""
+            form.rate = document.querySelector('#rate > input').value
+            form.interests = Array.from(document.querySelectorAll('#interests input')).filter(input => input.checked).map(input => input.value)
+            form.comments = document.querySelector('#comments > textarea').value
+            renderResults(form)
+            return false
+        }
+        const form = document.querySelector('form')
+        form.addEventListener('submit', submit)
+
+    </script>
+</body>
+
+</html>

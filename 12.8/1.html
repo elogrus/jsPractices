@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modalContainer {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal {
+            display: flex;
+            border-radius: 20px;
+            background-color: #fff;
+            top: 50%;
+            left: 50%;
+            max-width: 45%;
+            width: 100%;
+            padding: 1em;
+        }
+
+        .modal>img {
+            max-width: 100px;
+            width: 100%;
+        }
+
+        .modal>div {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .modal button {
+            background-color: #589FFF;
+            outline: 0;
+            border: 0;
+            padding: 1em;
+            border-radius: 1em;
+            font-weight: 800;
+            width: min-content;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            opacity: 0.8;
+        }
+
+        .modal button:active {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente error dolor esse, nisi molestiae odit
+        excepturi, iure doloremque consectetur sit dignissimos nesciunt reiciendis atque id odio. Exercitationem
+        veritatis temporibus minus!
+    </p>
+
+    <script>
+        const giftArr = [
+            {
+                title: "Скидка 20% на первую покупку в нашем магазине!",
+                icon: "/img/discount.svg"
+            },
+            {
+                title: "Скидка 10% на всё!",
+                icon: "/img/discount_2.svg"
+            },
+            {
+                title: "Подарок при первой покупке в нашем магазине!",
+                icon: "/img/gift.svg"
+            },
+            {
+                title: "Бесплатная доставка для вас!",
+                icon: "/img/delivery.svg"
+            },
+            {
+                title: "Сегодня день больших скидок!",
+                icon: "/img/discount_3.svg"
+            }
+        ]
+        const closeModal = (modal) => {
+            modal.remove()
+        }
+        const showModal = () => {
+            const gift = giftArr[Math.floor(Math.random() * giftArr.length)];
+            const div = document.createElement('div')
+            div.className = 'modalContainer'
+            div.innerHTML = `
+            <div class="modal">
+                <img src="${gift.icon}" />
+                <div>
+                    <span>${gift.title}</span>
+                    <button>Отлично!</button>
+                </div>
+            </div>
+            `
+            div.querySelector('button').addEventListener('click', () => closeModal(div))
+            document.body.appendChild(div)
+        }
+        setTimeout(showModal, 3000)
+    </script>
+</body>
+
+</html>

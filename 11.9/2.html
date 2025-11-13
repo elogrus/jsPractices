@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+
+        form>div {
+            margin-bottom: 0.4em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Калькулятор стоимости доставки</h1>
+    <form>
+        <div id="name">
+            <span>Название товара: </span>
+            <input required />
+        </div>
+        <div id="weight">
+            <span>Вес товара (кг):</span>
+            <input required type="number" min="0" />
+        </div>
+        <div id="distance">
+            <span>Расстояние доставки (км): </span>
+            <input required type="number" min="0" />
+        </div>
+        <button id="submit">Добавить товар</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Вес товара (кг)</th>
+                <th>Расстояние (км)</th>
+                <th>Стоимость доставки</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const calcPrice = (weight, distance) => {
+            return (weight * distance) / 10
+        }
+        const name = document.querySelector('#name > input')
+        const weight = document.querySelector('#weight > input')
+        const distance = document.querySelector('#distance > input')
+
+        const tbody = document.querySelector('table > tbody')
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault()
+            const tr = document.createElement('tr')
+            tr.innerHTML = `
+                <td>${name.value}</td>
+                <td>${weight.value}</td>
+                <td>${distance.value}</td>
+                <td>${calcPrice(+weight.value, +distance.value)}</td>
+            `
+            tbody.appendChild(tr)
+            name.value = ''
+            weight.value = ''
+            distance.value = ''
+        })
+    </script>
+</body>
+
+</html>
