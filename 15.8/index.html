@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <form id="film-form">
+        <label for="title">Название:</label><br>
+        <input required ="text" id="title" name="title"><br>
+        <label for="genre">Жанр:</label><br>
+        <input required type="text" id="genre" name="genre"><br>
+        <label for="releaseYear">Год:</label><br>
+        <input required type="text" id="releaseYear" name="releaseYear"><br>
+        <input type="checkbox" id="isWatched" name="isWatched">
+        <label for="isWatched">Успели посмотреть?</label><br>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="panel">
+        <div class="filterBlock">
+            <input type="text" class="title" name="title" placeholder="Название фильма">
+            <input type="text" class="genre" name="genre" placeholder="Жанр">
+            <input type="text" class="releaseYear" name="releaseYear" placeholder="Год релиза">
+            <select type="text" class="isWatched" name="isWatched">
+                <option value='all'>Все</option>
+                <option value='yes'>Да</option>
+                <option value='no'>Нет</option>
+            </select>
+
+        </div>
+        <button type="submit">Удалить всё</button>
+
+    </div>
+
+    <table id="film-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Год</th>
+                <th>Успели посмотреть?</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="film-tbody">
+            <!-- Rows will be inserted here -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
