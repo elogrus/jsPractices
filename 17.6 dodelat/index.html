@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="./modules/index.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            outline: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #C3CCD6;
+            height: 100%;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            padding: 10px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .wrapper>div {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        input {
+            border-radius: 1000px;
+            width: 100%;
+            padding: 1em;
+        }
+
+        a {
+            background-color: #008179;
+            padding: 1em;
+            outline: 0;
+            border: 0;
+            color: #fff;
+            border-radius: 1000px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        a:active {
+            opacity: 0.9;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            box-sizing: border-box;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid currentColor;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: currentColor transparent transparent transparent;
+        }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #2C2C2C;
+            color: #fff;
+        }
+
+        tbody {
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            padding: 0.8em;
+            font-weight: 400;
+
+        }
+
+        th:hover {
+            background-color: #505050;
+            cursor: pointer;
+        }
+
+        th.active {
+            background-color: #000;
+        }
+
+        button {
+            background-color: #9E0019;
+            padding: 1em 1.5em;
+            outline: 0;
+            border: 0;
+            color: #fff;
+            border-radius: 1000px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lds-ring spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wrapper" style="display: none;">
+        <div>
+            <h1>Склад</h1>
+            <a href="./addPage.html">Добавить запись</a>
+        </div>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th data-field="name">Название</th>
+                    <th data-field="shelf">Полка</th>
+                    <th data-field="weight">Вес</th>
+                    <th data-field="date">Время хранения</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
